@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import MainNavigator from 'Navigators/MainNavigator';
+import { Provider } from 'react-redux';
+import store from 'Redux/store';
 
 const App = () => (
-  <View>
-    <Text>ALPEREN</Text>
-  </View>
+  <Provider store={store}>
+    <MainNavigator />
+  </Provider>
 );
 
 export default App;
