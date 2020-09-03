@@ -59,8 +59,10 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 16,
+    lineHeight: 19,
     padding: 4,
     textTransform: 'capitalize',
+    textAlign: 'center',
   },
 });
 

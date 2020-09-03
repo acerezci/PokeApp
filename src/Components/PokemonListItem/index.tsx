@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 24,
+    lineHeight: 27,
     marginLeft: 8,
     textTransform: 'capitalize',
   },

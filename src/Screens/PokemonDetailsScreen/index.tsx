@@ -17,11 +17,12 @@ import PokemonDetailsCard from 'Components/PokemonDetailsCard';
 
 interface RouteParamsType {
   pokemonUrl: string;
+  name:string;
 }
 
 const PokemonDetailsScreen = () => {
   const route = useRoute();
-  const { pokemonUrl } = route.params as RouteParamsType;
+  const { pokemonUrl, name } = route.params as RouteParamsType;
   const dispacth = useDispatch();
 
   const pokemonDetails = useSelector(pokemonDetailsSelector);
@@ -29,7 +30,6 @@ const PokemonDetailsScreen = () => {
   const pokemonDetailsError = useSelector(pokemonDetailsErrorSelector);
 
   const {
-    name,
     abilities,
     types,
     height,
@@ -46,7 +46,7 @@ const PokemonDetailsScreen = () => {
     <ScrollView style={styles.container}>
       {pokemonDetailsLoading && <Loading size="large" />}
       {pokemonDetailsError && <Text style={styles.errorText}>Error</Text>}
-      {pokemonDetails && (
+      {name && (
         <View style={styles.contentContainer}>
           <Image
             resizeMode="contain"
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 24,
+    lineHeight: 30,
     textAlign: 'center',
     textTransform: 'capitalize',
     marginVertical: 16,

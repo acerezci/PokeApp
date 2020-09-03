@@ -14,8 +14,8 @@ const PokemonFeature = (props:PropTypes) => (
   <View style={styles.container}>
     <Text style={styles.title}>{props.title}</Text>
     <View style={styles.featuresContainer}>
-      {props.items.map((item) => (
-        <View style={styles.itemContainer}>
+      {props.items && props.items.map((item, index) => (
+        <View key={index.toString()} style={styles.itemContainer}>
           <Text style={styles.itemText}>
             {item[props.feature].name}
             {' '}
@@ -48,8 +48,10 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 16,
+    lineHeight: 19,
     padding: 4,
     textTransform: 'capitalize',
+    textAlign: 'center',
   },
 });
 
