@@ -28,27 +28,42 @@ const PokemonDetailsScreen = () => {
   const pokemonDetailsLoading = useSelector(pokemonDetailsLoadingSelector);
   const pokemonDetailsError = useSelector(pokemonDetailsErrorSelector);
 
-  const { name, abilities, types } = pokemonDetails;
+  const {
+    name,
+    abilities,
+    types,
+    height,
+    weight,
+    base_experience: baseExperience,
+    stats,
+  } = pokemonDetails;
 
   useEffect(() => {
     dispacth(setPokemonDetails(pokemonUrl));
   }, []);
 
-  console.log(pokemonDetails);
-
   return (
     <ScrollView style={styles.container}>
       {pokemonDetailsLoading && <Loading size="large" />}
       {pokemonDetailsError && <Text style={styles.errorText}>Error</Text>}
-      <View style={styles.contentContainer}>
-        <Image
-          resizeMode="contain"
-          style={styles.image}
-          source={{ uri: `${pokemonImageBaseURL}${name.toLowerCase()}.jpg` }}
-        />
-        <Text style={styles.name}>{name}</Text>
-        <PokemonDetailsCard abilities={abilities} types={types} />
-      </View>
+      {pokemonDetails && (
+        <View style={styles.contentContainer}>
+          <Image
+            resizeMode="contain"
+            style={styles.image}
+            source={{ uri: `${pokemonImageBaseURL}${name.toLowerCase()}.jpg` }}
+          />
+          <Text style={styles.name}>{name}</Text>
+          <PokemonDetailsCard
+            abilities={abilities}
+            types={types}
+            height={height}
+            weight={weight}
+            baseExperience={baseExperience}
+            stats={stats}
+          />
+        </View>
+      )}
     </ScrollView>
   );
 };
